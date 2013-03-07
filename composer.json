@@ -1,6 +1,6 @@
 {
     "name": "boltconcepts/bdev-routing-extra-bundle",
-    "description": "Extends Symfony2 with a extra route based configurations like breadcrumb, menu and more.",
+    "description": "Extends Symfony2 with an extra route based configuration for context, breadcrumb, menu and more.",
     "keywords": ["symfony", "routing", "menu", "breadcrumb", "ui"],
     "type": "symfony-bundle",
     "license": "MIT",

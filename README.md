@@ -5,7 +5,7 @@ The `BDevRoutingExtraBundle` is a easy way to add information about routes to yo
 This for example can avoid having to override a title block in each template within your application by using `{{ route_extra('title') }}`.
 You can also use it to generate a breadcrumb using '{{ route_breadcrumb() }}' or add an item to a menu.
 
-[![Build Status](https://travis-ci.org/boltconcepts/BDevRoutingExtraBundle.png)](https://travis-ci.org/boltconcepts/BDevRoutingExtraBundle)
+[![Build Status](https://travis-ci.org/boltconcepts/BDevRoutingExtraBundle.png?branch=master)](https://travis-ci.org/boltconcepts/BDevRoutingExtraBundle)
 
 Installation
 =============
