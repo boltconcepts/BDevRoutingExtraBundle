@@ -1,0 +1,26 @@
+parameters:
+  bdev_routing_extra.knp_menu.provider.class: BDev\Bundle\RoutingExtraBundle\Extension\KnpMenu\MenuProvider
+  bdev_routing_extra.knp_menu.loader.class: BDev\Bundle\RoutingExtraBundle\Extension\KnpMenu\Loader\MenuDelegatingLoader
+  bdev_routing_extra.knp_menu.compiler.class: BDev\Bundle\RoutingExtraBundle\Extension\KnpMenu\MenuCompiler
+  bdev_routing_extra.knp_menu.configure_listener.class: BDev\Bundle\RoutingExtraBundle\Extension\KnpMenu\EventListener\ConfigureMenuListener
+
+services:
+  bdev_routing_extra.knp_menu.provider:
+    class: %bdev_routing_extra.knp_menu.provider.class%
+    arguments: [ @service_container, %bdev_routing_extra.resource%, { cache_dir: %kernel.cache_dir%, debug: %kernel.debug% } ]
+    tags:
+      - { name: knp_menu.provider }
+      - { name: bdev_routing_extra.cache_warmer }
+
+  bdev_routing_extra.knp_menu.loader:
+    class: %bdev_routing_extra.knp_menu.loader.class%
+    arguments: [ @bdev_routing_extra.loader, %bdev_routing_extra.knp_menu.options.menus% ]
+
+  bdev_routing_extra.knp_menu.compiler:
+    class: %bdev_routing_extra.knp_menu.compiler.class%
+    arguments: [ @router ]
+
+  bdev_routing_extra.knp_menu.configure_listener:
+    class: %bdev_routing_extra.knp_menu.configure_listener.class%
+    tags:
+      - { name: kernel.event_listener, event: bdev_routing_extra.menu_configure, method: onMenuConfigure }

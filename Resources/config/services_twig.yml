@@ -1,0 +1,10 @@
+parameters:
+  bdev_routing_extra.twig.extension.class: BDev\Bundle\RoutingExtraBundle\Twig\Extension\UiExtension
+
+services:
+  bdev_routing_extra.twig.extension:
+    class: %bdev_routing_extra.twig.extension.class%
+    calls:
+      - [ setContainer, [ @service_container ] ]
+    tags:
+      - { name: twig.extension }

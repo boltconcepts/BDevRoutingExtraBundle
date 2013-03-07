@@ -1,0 +1,28 @@
+{
+    "name": "boltconcepts/bdev-routing-extra-bundle",
+    "description": "Extends Symfony2 with a extra route based configurations like breadcrumb, menu and more.",
+    "keywords": ["symfony", "routing", "menu", "breadcrumb", "ui"],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Warnar Boekkooi",
+            "email": "warnar@boekkooi.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/framework-bundle": ">=2.0,<2.3-dev"
+    },
+    "require-dev":  {
+        "knplabs/knp-menu-bundle": "dev-master"
+    },
+    "suggest":      {
+        "knplabs/knp-menu-bundle": "for the knp menu extension"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": { "BDev\\Bundle\\RoutingExtraBundle": "" }
+    },
+    "target-dir": "BDev/Bundle/RoutingExtraBundle"
+}

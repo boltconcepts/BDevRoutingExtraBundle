@@ -1,0 +1,11 @@
+parameters:
+  bdev_routing_extra.breadcrumb.twig.extension.class: BDev\Bundle\RoutingExtraBundle\Extension\Breadcrumb\Twig\Extension\BreadcrumbExtension
+
+services:
+  bdev_routing_extra.breadcrumb.twig.extension:
+    class: %bdev_routing_extra.breadcrumb.twig.extension.class%
+    arguments: [ %bdev_routing_extra.breadcrumb.options% ]
+    calls:
+      - [ setContainer, [ @service_container ] ]
+    tags:
+      - { name: twig.extension }

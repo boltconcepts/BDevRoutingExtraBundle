@@ -1,0 +1,9 @@
+blog_show:
+  extra: extra
+
+blog_show_legacy:
+  parent: blog_show
+  menu:
+    main:
+      attributes:
+        class: home

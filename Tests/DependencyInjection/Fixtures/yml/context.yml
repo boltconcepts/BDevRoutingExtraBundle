@@ -1,0 +1,6 @@
+bdev_routing_extra:
+  context:
+    items:
+      - label
+      - summary
+      - extra

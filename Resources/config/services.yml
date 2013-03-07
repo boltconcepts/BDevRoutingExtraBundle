@@ -1,0 +1,42 @@
+parameters:
+  bdev_routing_extra.provider.class: BDev\Bundle\RoutingExtraBundle\RouteProvider
+
+  bdev_routing_extra.compiler.class: BDev\Bundle\RoutingExtraBundle\RouteCompiler
+
+  bdev_routing_extra.loader.class: BDev\Bundle\RoutingExtraBundle\Loader\CachedDelegatingLoader
+  bdev_routing_extra.loader.yml.class: BDev\Bundle\RoutingExtraBundle\Loader\YamlFileLoader
+
+  bdev_routing_extra.resolver.class: Symfony\Component\Config\Loader\LoaderResolver
+
+  bdev_routing_extra.cache_warmer.class: BDev\Bundle\RoutingExtraBundle\CacheWarmer\WarmableCacheWarmer
+
+services:
+  bdev_routing_extra.resolver:
+    class: %bdev_routing_extra.resolver.class%
+
+  bdev_routing_extra.loader.yml:
+    class: %bdev_routing_extra.loader.yml.class%
+    arguments: [ @file_locator ]
+    public: false
+    tags:
+      - { name: bdev_routing_extra.loader }
+
+  bdev_routing_extra.loader:
+    class: %bdev_routing_extra.loader.class%
+    arguments: [ @bdev_routing_extra.resolver ]
+
+  bdev_routing_extra.cache_warmer:
+    class: %bdev_routing_extra.cache_warmer.class%
+    arguments: [ [] ]
+    tags:
+      - { name: kernel.cache_warmer }
+
+  bdev_routing_extra.compiler:
+    class: %bdev_routing_extra.compiler.class%
+    arguments: [ @router ]
+
+  bdev_routing_extra.provider:
+    class: %bdev_routing_extra.provider.class%
+    arguments: [ @service_container, %bdev_routing_extra.resource%, { cache_dir: %kernel.cache_dir% } ]
+    tags:
+      - { name: bdev_routing_extra.cache_warmer, priority: 100 }

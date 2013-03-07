@@ -1,0 +1,18 @@
+bdev_routing_extra:
+  resource: %kernel.root_dir%/config/routing.ext.yml
+  twig: true
+  context:
+    items:
+      - label
+      - summary
+      - extra
+  breadcrumb:
+      label_attribute: [breadcrumb, label]
+  knp_menu:
+    menus:
+      main:
+        children_attributes:
+          class: 'mymain_menu'
+      footer:
+        children_attributes:
+          class: 'footer_menu'

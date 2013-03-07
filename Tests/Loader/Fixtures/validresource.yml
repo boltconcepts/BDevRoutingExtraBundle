@@ -1,0 +1,2 @@
+blog_show:
+    resource:     validroutes.yml
